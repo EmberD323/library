@@ -1,0 +1,74 @@
+:root{
+    box-sizing: border-box;
+    --highlight-colour:rgb(192, 192, 253);
+}
+.body{
+    position:relative ;
+}
+.gridContainer{
+    padding: 20px;
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+    
+    
+}
+
+.gridContainer>*{
+    box-shadow: 0px 0px 10px 0px #8a8a8d;
+    padding:15px;
+    position:relative;
+}
+
+.header,.gridContainer>*{
+    text-align: center;
+    font-weight: bold;
+}
+
+.header{
+    font-size: 25px;
+}
+
+
+.gridContainer>*>*{
+    font-weight: 200;
+    padding:5px;
+    text-align: left;
+}
+
+.newBook{
+    font-size: 19px; 
+    line-height: 19px; 
+    padding: 14px; 
+    border-radius: 19px; 
+    position:absolute;
+    left: 560px;
+}
+
+.remove{
+    position:absolute;
+    right: 20px;
+    border-radius: 10px; 
+}
+
+.read,.notRead{
+    position:absolute;
+    bottom: 15px;
+    padding:2px;
+    width:75px;
+    border-radius: 10px; 
+    text-align: center;
+    font-size: 12px;
+}
+.read{
+    left:190px;
+}
+
+.notRead{
+    left:275px;
+}
+
+button:hover{
+    background-color: var(--highlight-colour);
+    box-shadow: 0px 0px 10px 0px #8a8a8d;
+}

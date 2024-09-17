@@ -4,9 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="header">My Library</div>
+    <div class="gridContainer">
+    </div>
+    <button class="newBook">Add a book to the Library</button>
+    <form>
+        <p>
+            <label for="title">Book Name: </label>
+            <input type="text" name="title" id="title">
+        </p>
+        <p>
+            <label for="author">Author: </label>
+            <input type="text" name="author" id="author">
+        </p>
+        <p>
+            <label for="pages">Number of Pages: </label>
+            <input type="text" name="pages" id="pages">
+        </p>
+        <p>
+            <label for="pages">Reading Status:</label>
+            <input type="text" name="readStatus" id="readStatus">
+        </p>
     
+        <button type="submit" id="submit">Submit</button>
+        <button type="reset" id="reset">Reset Form</button>
+        <button id="close">Close</button>
+    </form>
+
+
+    <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
+
 </html>
