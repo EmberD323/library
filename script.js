@@ -94,19 +94,11 @@ addBookButton.addEventListener("click",()=>{
     form.style.display = "block";//reveal form
 });
 
-submitButton.addEventListener("click",(e)=>{
-    e.preventDefault();
-    const userInputtedBookName = document.querySelector("#title").value;
-    const userInputtedAuthor = document.querySelector("#author").value;
-    const userInputtedPages = document.querySelector("#pages").value;
-    const userInputtedStatus = document.querySelector("#readStatus").value;
-    const newBook = new Book(userInputtedBookName,userInputtedAuthor,userInputtedPages,userInputtedStatus);
-    console.log(newBook);
-    addBooktoLibrary(newBook);
-    //addnewbooto webpage
-    displayLibrary();
+//submitButton.addEventListener("click",(e)=>{
+    
+    
   
-});
+//});
 
 const closeButton = document.querySelector("#close");
 closeButton.addEventListener("click",(e)=>{
@@ -154,3 +146,51 @@ notReadButtons.forEach((notReadButton)=>{
         }
     });
 });
+
+//validation
+let bookNameDOM = form.childNodes[1].childNodes[3];
+let bookAuthorDOM = form.childNodes[3].childNodes[3];
+let bookPagesDOM = form.childNodes[5].childNodes[3];
+let bookStatusDOM = form.childNodes[7].childNodes[3];
+const bookNameError = document.querySelector("span.errorTitle")
+const bookAuthorError = document.querySelector("span.errorAuthor")
+const bookPagesError = document.querySelector("span.errorPages")
+const bookStatusError = document.querySelector("span.errorStatus")
+
+form.addEventListener("submit", (event) => {
+    
+    // if the email field is valid, we let the form submit
+    console.log(bookStatusDOM.validity.valid);
+    if (!bookNameDOM.validity.valid ||!bookAuthorDOM.validity.valid ||!bookPagesDOM.validity.valid||!bookStatusDOM.validity.valid) {
+      // If it isn't, we display an appropriate error message
+      showError();
+      //then dont do anything
+      event.preventDefault();
+    }
+    else{
+        event.preventDefault();
+        const userInputtedBookName = document.querySelector("#title").value;
+        const userInputtedAuthor = document.querySelector("#author").value;
+        const userInputtedPages = document.querySelector("#pages").value;
+        const userInputtedStatus = document.querySelector("#readStatus").value;
+        const newBook = new Book(userInputtedBookName,userInputtedAuthor,userInputtedPages,userInputtedStatus);
+        console.log(newBook);
+        addBooktoLibrary(newBook);
+        //addnewbooto webpage
+        displayLibrary();
+    }
+  });
+
+function showError() {
+if (bookNameDOM.validity.valueMissing) {
+    bookNameError.textContent = "You need to enter a book name.";
+} else if (bookAuthorDOM.validity.valueMissing) {
+    bookAuthorError.textContent = "You need to enter an author's name.";
+} else if (bookPagesDOM.validity.rangeUnderflow) {
+    bookPagesError.textContent = "Book must be atleast 10 pages to enter library.";
+}
+else if (bookStatusDOM.validity.patternMismatch) {
+    bookStatusError.textContent = "Only Read or Not yet read are valid inputs.";
+}
+
+}

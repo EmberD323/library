@@ -11,23 +11,28 @@
     <div class="gridContainer">
     </div>
     <button class="newBook">Add a book to the Library</button>
-    <form>
+    <form novalidate>
         <p>
             <label for="title">Book Name: </label>
-            <input type="text" name="title" id="title" placeholder="J.R.R Tolkien" required>
+            <input type="text" name="title" id="title" placeholder="J.R.R Tolkien" required maxlength="100">
+            <span class="errorTitle" aria-live="polite"></span>
         </p>
         <p>
             <label for="author">Author: </label>
             <input type="text" name="author" id="author" placeholder="The Hobbit" required>
+            <span class="errorAuthor" aria-live="polite"></span>
         </p>
         <p>
             <label for="pages">Number of Pages: </label>
-            <input type="text" name="pages" id="pages" placeholder="295">
+            <input type="number" name="pages" id="pages" placeholder="295"min="10">
+            <span class="errorPages" aria-live="polite"></span>
         </p>
         <p>
             <label for="pages">Reading Status:</label>
-            <input type="text" name="readStatus" id="readStatus" placeholder="Read/Not yet Read">
+            <input type="text" name="readStatus" id="readStatus" placeholder="Read/Not yet Read" required pattern="[Rr]ead|[Nn]ot [Yy]et [Rr]ead">
+            <span class="errorStatus" aria-live="polite"></span>
         </p>
+        
     
         <button type="submit" id="submit">Submit</button>
         <button type="reset" id="reset">Reset Form</button>
